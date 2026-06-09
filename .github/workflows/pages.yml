@@ -1,24 +1,31 @@
 name: Deploy to GitHub Pages
+
 on:
-push:
-branches: [main]
-workflow_dispatch: # GitHub UI에서 수동 실행도 허용
+  push:
+    branches: [main]
+  workflow_dispatch:
+
 permissions:
-contents: read
-pages: write
-id-token: write
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
-deploy:
-runs-on: ubuntu-latest
-environment:
-name: github-pages
-url: ${{ steps.deployment.outputs.page_url}}
-steps:
-- uses: actions/checkout@v4
-- name: 정적 파일 업로드
-uses: actions/upload-pages-artifact@v3
-with:
-path: . # 정적 파일이 루트에 있으므로 .
-- name: Pages에 배포
-id: deployment
-uses: actions/deploy-pages@v4
+  deploy:
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 정적 파일 업로드
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Pages에 배포
+        id: deployment
+        uses: actions/deploy-pages@v4

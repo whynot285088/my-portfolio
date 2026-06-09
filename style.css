@@ -1,0 +1,4 @@
+body { font: 16px/1.6 system-ui, "Malgun Gothic", sans-serif;
+max-width: 720px; margin: 4rem auto; padding: 0 1rem; color: #1e293b; }
+header h1 { font-size: 2rem; color: #065a82; }
+ul li { margin: .4rem 0; }
